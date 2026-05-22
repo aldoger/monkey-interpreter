@@ -135,7 +135,7 @@ func (fl *FunctionLiteral) String() string {
 	out.WriteString(fl.TokenLiteral())
 	if fl.Name != nil {
 		out.WriteString(" ")
-		out.WriteString(fl.Name.Token.Literal)
+		out.WriteString(fl.Name.String())
 	}
 	out.WriteString("(")
 	out.WriteString(strings.Join(params, ", "))
