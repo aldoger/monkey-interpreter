@@ -2,6 +2,7 @@ package ast
 
 import (
 	"bytes"
+	"fmt"
 	"strings"
 
 	"github.com/aldoger/monkey-interpreter/token"
@@ -193,6 +194,14 @@ type IntegerLiteral struct {
 func (il *IntegerLiteral) expressionNode()      {}
 func (il *IntegerLiteral) TokenLiteral() string { return il.Token.Literal }
 
+type StringLiteral struct {
+	Token token.Token
+	Value string
+}
+
+func (sl *StringLiteral) expressionNode()      {}
+func (sl *StringLiteral) TokenLiteral() string { return sl.Token.Literal }
+
 func (p *Program) TokenLiteral() string {
 	if len(p.Statements) > 0 {
 		return p.Statements[0].TokenLiteral()
@@ -210,7 +219,10 @@ func (p *Program) String() string {
 }
 
 func (il *IntegerLiteral) String() string { return il.Token.Literal }
-func (i *Identifier) String() string      { return i.Value }
+
+func (sl *StringLiteral) String() string { return fmt.Sprintf(`"%s"`, sl.Value) }
+
+func (i *Identifier) String() string { return i.Value }
 
 func (ls *LetStatement) String() string {
 	var out bytes.Buffer
