@@ -2,7 +2,6 @@ package ast
 
 import (
 	"bytes"
-	"fmt"
 	"strings"
 
 	"github.com/aldoger/monkey-interpreter/token"
@@ -220,7 +219,7 @@ func (p *Program) String() string {
 
 func (il *IntegerLiteral) String() string { return il.Token.Literal }
 
-func (sl *StringLiteral) String() string { return fmt.Sprintf(`"%s"`, sl.Value) }
+func (sl *StringLiteral) String() string { return sl.Token.Literal }
 
 func (i *Identifier) String() string { return i.Value }
 
