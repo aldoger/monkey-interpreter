@@ -19,7 +19,7 @@ const SKULL_FACE = `
     |   |
   __|___|__
 
-  
+
 `
 
 func Start(in io.Reader, out io.Writer) {
